@@ -1,0 +1,144 @@
+{
+ "_note": "corners = TL,TR,BR,BL of each face in the ORIGINAL photo pixel coords (3024x4032). rot_ccw90 = number of 90deg CCW rotations applied after rectification to bring the face into net orientation. photo = source file. Slot names are geometric: left = -X = on the viewer's left when facing FRONT. NOTE: left.jpg/right.jpg are swapped relative to slots based on physical evidence (see README).",
+ "dims_mm": {
+  "L": 230,
+  "W": 112,
+  "H": 116
+ },
+ "px_per_mm": 10,
+ "inset_px": 6,
+ "faces": {
+  "front": {
+   "corners": [
+    [
+     263.5,
+     1612.8
+    ],
+    [
+     2609.3,
+     1581.0
+    ],
+    [
+     2537.5,
+     2715.3
+    ],
+    [
+     373.9,
+     2698.3
+    ]
+   ],
+   "rot_ccw90": 0,
+   "photo": "front.jpg"
+  },
+  "back": {
+   "corners": [
+    [
+     415.5,
+     1651.7
+    ],
+    [
+     2618.7,
+     1691.5
+    ],
+    [
+     2531.0,
+     2770.9
+    ],
+    [
+     464.7,
+     2689.6
+    ]
+   ],
+   "rot_ccw90": 0,
+   "photo": "back.jpg"
+  },
+  "left": {
+   "corners": [
+    [
+     909.4,
+     1663.3
+    ],
+    [
+     2216.4,
+     1672.7
+    ],
+    [
+     2137.2,
+     2902.3
+    ],
+    [
+     945.0,
+     2933.9
+    ]
+   ],
+   "rot_ccw90": 0,
+   "photo": "right.jpg"
+  },
+  "right": {
+   "corners": [
+    [
+     782.4,
+     1699.9
+    ],
+    [
+     2172.7,
+     1713.1
+    ],
+    [
+     2103.9,
+     3031.7
+    ],
+    [
+     840.7,
+     3005.2
+    ]
+   ],
+   "rot_ccw90": 0,
+   "photo": "left.jpg"
+  },
+  "top": {
+   "corners": [
+    [
+     948.8,
+     855.1
+    ],
+    [
+     2032.6,
+     859.1
+    ],
+    [
+     2186.3,
+     3282.5
+    ],
+    [
+     829.6,
+     3305.8
+    ]
+   ],
+   "rot_ccw90": 3,
+   "photo": "top.jpg"
+  },
+  "bottom": {
+   "corners": [
+    [
+     821,
+     530
+    ],
+    [
+     2047.7,
+     529.6
+    ],
+    [
+     2315.0,
+     3249.4
+    ],
+    [
+     772,
+     3350
+    ]
+   ],
+   "rot_ccw90": 1,
+   "photo": "bottom.jpg"
+  }
+ }
+}

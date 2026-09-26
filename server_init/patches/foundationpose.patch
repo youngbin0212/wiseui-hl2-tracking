@@ -1,0 +1,34 @@
+diff --git a/estimater.py b/estimater.py
+index e147d56..aaa2beb 100644
+--- a/estimater.py
++++ b/estimater.py
+@@ -229,6 +229,15 @@ class FoundationPose:
+     poses = poses[ids]
+ 
+     logging.info(f'sorted scores:{scores}')
++    # [DIAG] 회전 판별력 요약 — A/B(텍스처 on/off) 비교용. 상위 25개가 좁게 뭉치면 못 고름.
++    try:
++        s = scores.detach().float().cpu().numpy()
++        top = s[:25]
++        logging.info(f"[DIAG] score spread: top1={s[0]:.4f} top2={s[1]:.4f} gap12={s[0]-s[1]:.4f} "
++                     f"top1-25 range={s[0]-s[24]:.4f} (상대 {100*(s[0]-s[24])/abs(s[0]):.2f}%) "
++                     f"n_within_0.1={int((s[0]-s<0.1).sum())}")
++    except Exception:
++        pass
+ 
+     best_pose = poses[0]@self.get_tf_to_centered_mesh()
+     self.pose_last = poses[0]
+diff --git a/learning/training/predict_score.py b/learning/training/predict_score.py
+index 6e15f62..dee9d03 100644
+--- a/learning/training/predict_score.py
++++ b/learning/training/predict_score.py
+@@ -192,6 +192,9 @@ class ScorePredictor:
+           B = torch.cat([B, pose_data.normalBs.cuda().float()], dim=1)
+         with torch.cuda.amp.autocast(enabled=self.amp):
+           output = self.model(A, B, L=len(A))
++        # [DIAG] score_logit 원본 dtype — fp16 이면 순위가 정밀도 아래로 뭉개짐(회전 불안정 원인).
++        if b == 0:
++          logging.info(f"[DIAG] score_logit dtype={output['score_logit'].dtype} amp={self.amp}")
+         scores_cur = output["score_logit"].float().reshape(-1)
+         ids.append(scores_cur.argmax()+b)
+         scores.append(scores_cur)

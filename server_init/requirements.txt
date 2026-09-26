@@ -1,0 +1,9 @@
+# init_server.py + hl2_capture.py 실행에 필요한 패키지 (Windows, conda env 예: my_base).
+# hl2ss 자체는 pip 패키지가 아니라 dependencies/hl2ss/viewer 를 sys.path 로 잡아서 씀
+# (HL2SS_VIEWER 환경변수, 기본값은 hl2_capture.py 참고) — 여기엔 안 나옴.
+numpy==1.26.4
+Pillow==10.4.0
+opencv-python==4.11.0.86
+requests==2.32.3
+pyzmq==25.1.2
+av==16.1.0
